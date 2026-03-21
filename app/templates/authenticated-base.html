@@ -82,13 +82,29 @@
                     Pokemon
                 </a>
             </li>
-          
+
+            <li class="nav-item">
+                <a class="nav-link d-flex align-items-center {{ 'active' if request.path == '/mypokemon' }}"
+                    href="/mypokemon">
+                    <span class="material-icons me-2">pets</span>
+                    My Pokemon
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link d-flex align-items-center {{ 'active' if request.path == '/stats' }}"
+                    href="/stats">
+                    <span class="material-icons me-2">bar_chart</span>
+                    Stats
+                </a>
+            </li>
+        
             <li class="nav-item mt-auto">
                 <a class="nav-link d-flex align-items-center text-danger" href="/logout">
                     <span class="material-icons me-2">logout</span>
                     Logout
                 </a>
-            </li>
+            </li>       
         </ul>
     </nav>
 
@@ -115,8 +131,6 @@
         {% block subpage_content %}{% endblock %}
 
     </div>
-
-
 </div>
 
 

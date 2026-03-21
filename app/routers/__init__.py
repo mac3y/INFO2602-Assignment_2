@@ -18,3 +18,12 @@ main_router.include_router(index_router)
 
 from .pokemon import pokemon_router
 main_router.include_router(pokemon_router)
+
+from .capture import capture_router
+main_router.include_router(capture_router)
+
+from .mypokemon import mypokemon_router
+main_router.include_router(mypokemon_router)
+
+from .stats import stats_router
+main_router.include_router(stats_router)

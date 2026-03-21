@@ -31,7 +31,7 @@ async def login_action(
     access_token = create_access_token(data={"sub": f"{user.id}", "role": user.role},)
 
     max_age = 1 * 24 * 60 * 60 # (1 day converted to secs)
-    response = RedirectResponse(url="/", status_code=status.HTTP_303_SEE_OTHER)
+    response = RedirectResponse(url="/pokemon", status_code=status.HTTP_303_SEE_OTHER)
     response.set_cookie(key="access_token", value=f"Bearer {access_token}", httponly=True, max_age=max_age, samesite="lax")
     return response
 
@@ -51,11 +51,9 @@ def signup_user(request:Request, db:SessionDep, username: Annotated[str, Form()]
     except Exception as e:
         print(e)
         db.rollback()
-        raise HTTPException(
-                    status_code=400,
-                    detail="Username or email already exists",
-                    headers={"WWW-Authenticate": "Bearer"},
-                )
+        flash(request, "Username or email already exists", "danger")
+        return RedirectResponse(url="/signup", status_code=status.HTTP_303_SEE_OTHER)
+    
 
 @auth_router.get("/identify", response_model=UserResponse)
 def get_user_by_id(db: SessionDep, user:AuthDep):

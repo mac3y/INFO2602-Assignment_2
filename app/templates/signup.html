@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% block title %}Administravice Dashboard{% endblock %}
+{% block title %}Register{% endblock %}
 
 
 {% block inline_styles %}
@@ -64,7 +64,7 @@
                                 required="required">
                         </div>
                         <div class="mb-3">
-                            <label for="username" class="form-label">Email</label>
+                            <label for="email" class="form-label">Email</label>
                             <input type="email" class="form-control form-control-md" id="email" name="email"
                                 required="required">
                         </div>
@@ -76,18 +76,17 @@
                         </div>
 
                         <div class="d-grid mb-3">
-                            <button type="submit" class="btn btn-primary btn-lg">
-                                Sign In
+                            <button type="submit" id="submitButton" class="btn btn-primary btn-lg">
+                                Sign Up
                             </button>
                         </div>
-                        {% for message in get_flashed_messages(request) %}
-                            <div class="alert alert-{{ message.type }}" role="alert">{{ message.message }}</div>
-                        {% endfor %}
                     </form>
-
+                    {% for message in get_flashed_messages(request) %}
+                    <div class="alert alert-{{ message.type }}" role="alert">{{ message.message }}
+                    </div>
+                    {% endfor %}
                 </div>
             </div>
-
         </div>
     </div>
 </div>
