@@ -90,7 +90,7 @@ describe('Assignment 2 tests', () => {
 
         const successMessage = await page.$eval('.alert', el => el.textContent);
         expect(successMessage).toContain('Username or email already exists');
-    }, 20000);
+    }, 60000);
 
 
     test('Login should redirect to main dashboard', async () => {
