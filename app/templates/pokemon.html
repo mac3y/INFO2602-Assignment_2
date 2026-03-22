@@ -55,9 +55,7 @@
                     <div class="d-grid">
                         <button class="btn btn-primary capture-button" 
                                 data-pokemon-id="{{ pokemon.id }}" 
-                                data-pokemon-name="{{ pokemon.name }}"
-                                data-bs-toggle="modal"
-                                data-bs-target="#captureModal">
+                                data-name="{{ pokemon.name }}">
                             Capture
                         </button>
                     </div>
@@ -69,7 +67,7 @@
 </div>
 
 
-<div class="modal fade" id="captureModal" tabindex="-1">
+<div id="captureModal" class="modal">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -97,20 +95,20 @@
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    const captureModal = document.getElementById('captureModal');
-    if(captureModal) {
-        captureModal.addEventListener('show.bs.modal', function(event) {
-            const button = event.relatedTarget;
-            const pokemonName = button.getAttribute('data-pokemon-name');
-            const pokemonId = button.getAttribute('data-pokemon-id');
-            console.log('Opening modal for:', pokemonName);
-            console.log('Modal element:', captureModal);
-            document.getElementById('pokemonName').textContent = pokemonName;
-            document.getElementById('pokemonId').value = pokemonId;
+    const modal=document.getElementById('captureModal');
+    const pokemonNameSpan=document.getElementById('pokemonName');
+    const pokemonIdInput=document.getElementById('pokemonId');
+
+    document.querySelectorAll('.capture-button').forEach(button => {
+        button.addEventListener('click', function() {
+            const pokemonId = this.getAttribute('data-pokemon-id');
+            const pokemonName = this.getAttribute('data-name');
+            pokemonNameSpan.textContent = pokemonName;
+            pokemonIdInput.value = pokemonId;
+            modal.classList.add('show');
+            modal.style.display='block';
         });
-    } else {
-        console.log('ERROR: captureModal not found!');
-    }
+    });
 });
 </script>
 {% endblock %}
