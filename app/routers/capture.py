@@ -18,7 +18,8 @@ async def capture_pokemon(
     pokemon_id: Annotated[int, Form()],
     name: Annotated[str, Form()]
 ):
-
+    print(f"*** Capture Endpoint Hit ***")
+    print(f"RECEIVED: Pokemon ID {pokemon_id} with nickname '{name}'")
     existing=db.exec(select(UserPokemon).where(UserPokemon.user_id==user.id, UserPokemon.pokemon_id==pokemon_id)).first()
 
     if existing:
