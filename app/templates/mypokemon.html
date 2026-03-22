@@ -27,6 +27,7 @@
 {% endblock %}
 
 {% block subpage_content %}
+<!-- DEBUG: {{ captured_pokemon|length }} Pokemon found-->
 <div class="container mt-4">
     <form class="search-form row g-3" method="GET" action="/mypokemon">
         <div class="col-md-10">
@@ -38,9 +39,9 @@
     </form>
 
     <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-4">
+        {% for pokemon in captured_pokemon %}
         <div class="col">
             <div class="card pokemon-card h-100">
-                {% for pokemon in captured_pokemon %}
                 <img src="{{ pokemon.image_url }}" class="card-img-top pokemon-img" alt="{{ pokemon.pokemon_name }}">
                 <div class="card-body">
                     <h5 class="card-title">{{ pokemon.nickname }}</h5>

@@ -29,6 +29,7 @@ async def capture_pokemon(
             pokemon_id=pokemon_id,
             nickname=name if name else None
         )
+        print(f"SAVED: Pokemon ID {pokemon_id} with nickname '{name}'")
         db.add(captured)
         db.commit()
         flash(request, "Successfully captured Pokemon!", "success")

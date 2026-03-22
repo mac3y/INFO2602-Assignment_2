@@ -42,6 +42,8 @@ async def my_pokemon(
 
     print(f"User {user.id} has {len(captured_pokemon)} captured Pokemon")
     
+    print(f"Captured Pokemon data: {captured_pokemon}")
+    
     return templates.TemplateResponse(
         request=request,
         name="mypokemon.html",
