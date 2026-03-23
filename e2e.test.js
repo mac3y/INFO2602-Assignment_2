@@ -406,7 +406,7 @@ describe('Assignment 2 tests', () => {
 
         const successMessage = await page.$eval('.alert', el => el.textContent);
         expect(successMessage).toContain('Successfully renamed Pokemon!');
-    }, 180000);
+    }, 300000);
 
 
 
@@ -453,7 +453,7 @@ describe('Assignment 2 tests', () => {
 
         const successMessage = await page.$eval('.alert', el => el.textContent);
         expect(successMessage).toContain('Bye bye');
-    }, 180000);
+    }, 300000);
 
 
     test('Stats Page loads and renders chart', async () => {

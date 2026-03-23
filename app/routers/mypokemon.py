@@ -65,14 +65,18 @@ async def rename_pokemon(
     name: Annotated[str, Form()],
     method_override: Optional[str] = Form(default=None)
 ):
-    captured = db.get(UserPokemon,user_pokemon_id)
+
+    print(f"*** RENAME ENDPOINT HIT for ID {user_pokemon_id} with name '{name}' ***")
+    captured = db.get(UserPokemon, user_pokemon_id)
     if captured and captured.user_id==user.id:
         captured.nickname=name
         db.add(captured)
         db.commit()
         flash(request, "Successfully renamed Pokemon!", "success")
+        print(f"*** RENAME SUCCESS ***")
     else:
         flash(request, "Pokemon not found!", "danger")
+        print(f"*** RENAME FAILED: Pokemon not found ***")
 
     return RedirectResponse(url="/mypokemon", status_code=status.HTTP_303_SEE_OTHER)
 
