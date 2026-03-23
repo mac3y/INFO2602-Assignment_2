@@ -17,13 +17,13 @@ describe('Assignment 2 tests', () => {
             args: ['--no-sandbox', '--disable-setuid-sandbox'],
         });
         page = await browser.newPage();
-    }, 60000);
+    });
 
     afterAll(async () => {
         if (browser) {
             await browser.close();
         }
-    }, 20000);
+    });
 
     test('Login Page loads successfully', async () => {
         await page.goto(`${BASE_URL}/`);
@@ -90,7 +90,7 @@ describe('Assignment 2 tests', () => {
 
         const successMessage = await page.$eval('.alert', el => el.textContent);
         expect(successMessage).toContain('Username or email already exists');
-    }, 60000);
+    }, 20000);
 
 
     test('Login should redirect to main dashboard', async () => {
@@ -106,7 +106,7 @@ describe('Assignment 2 tests', () => {
 
         const title = await page.title();
         expect(title).toBe('Assignment 2');
-    }, 60000);
+    }, 20000);
 
     test('The pokemon page should load and render content', async () => {
         await page.goto(`${BASE_URL}/pokemon`);
@@ -194,7 +194,7 @@ describe('Assignment 2 tests', () => {
             headers.map(h => h.textContent.trim().toLowerCase())
         );
         expect(saurNames.sort()).toEqual(['bulbasaur', 'ivysaur', 'venusaur'].sort());
-    }, 60000);
+    }, 20000);
 
 
     test('Clicking every single capture button should render a modal with the name of the pokemon in it', async () => {
@@ -254,7 +254,7 @@ describe('Assignment 2 tests', () => {
 
         const successMessage = await page.$eval('.alert', el => el.textContent);
         expect(successMessage).toContain('Successfully captured Pokemon!');
-    }, 60000);
+    }, 20000);
 
 
     test('My Pokemon Page tests', async () => {
@@ -406,7 +406,7 @@ describe('Assignment 2 tests', () => {
 
         const successMessage = await page.$eval('.alert', el => el.textContent);
         expect(successMessage).toContain('Successfully renamed Pokemon!');
-    }, 300000);
+    }, 20000);
 
 
 
@@ -453,7 +453,7 @@ describe('Assignment 2 tests', () => {
 
         const successMessage = await page.$eval('.alert', el => el.textContent);
         expect(successMessage).toContain('Bye bye');
-    }, 300000);
+    }, 20000);
 
 
     test('Stats Page loads and renders chart', async () => {
@@ -539,5 +539,5 @@ describe('Assignment 2 tests', () => {
 
         const chartCount = await page.$$eval('#container .highcharts-root', charts => charts.length);
         expect(chartCount).toBe(1);
-    }, 120000);
+    }, 20000);
 });

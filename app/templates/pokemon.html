@@ -55,7 +55,7 @@
                     <div class="d-grid">
                         <button class="btn btn-primary capture-button" 
                                 data-pokemon-id="{{ pokemon.id }}" 
-                                data-name="{{ pokemon.name }}">
+                                data-pokemon-name="{{ pokemon.name }}">
                             Capture
                         </button>
                     </div>
@@ -102,7 +102,7 @@ document.addEventListener('DOMContentLoaded', function() {
     document.querySelectorAll('.capture-button').forEach(button => {
         button.addEventListener('click', function() {
             const pokemonId = this.getAttribute('data-pokemon-id');
-            const pokemonName = this.getAttribute('data-name');
+            const pokemonName = this.getAttribute('data-pokemon-name');
             pokemonNameSpan.textContent = pokemonName;
             pokemonIdInput.value = pokemonId;
             modal.classList.add('show');
