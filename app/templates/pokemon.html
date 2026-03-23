@@ -41,7 +41,7 @@
         {% for pokemon in pokemons %}
         <div class="col">
             <div class="card pokemon-card h-100">
-                <img src="{{ pokemon.image_url }}" class="card-img-top pokemon-img" alt="{{ pokemon.name }}">
+                <img src="{{ pokemon.image_url }}" class="card-img-top pokemon-img" alt="{{ pokemon.name }}" loading="lazy">
                 <div class="card-body">
                     <h5 class="card-title text-center">{{ pokemon.name }}</h5>
 
@@ -55,7 +55,9 @@
                     <div class="d-grid">
                         <button class="btn btn-primary capture-button" 
                                 data-pokemon-id="{{ pokemon.id }}" 
-                                data-pokemon-name="{{ pokemon.name }}">
+                                data-pokemon-name="{{ pokemon.name }}"
+                                data-bs-toggle="modal"
+                                data-bs-target="#captureModal">>
                             Capture
                         </button>
                     </div>

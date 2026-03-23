@@ -1,4 +1,4 @@
-from sqlmodel import SQLModel, Field
+from sqlmodel import SQLModel, Field, Index
 from typing import Optional
 
 class UserPokemon(SQLModel, table=True):

@@ -105,6 +105,7 @@
 
             <form id="renameForm" method="POST">
                 <div class="modal-body">
+                    <input type="hidden" name="method_override" value="PUT">
                     <input type="hidden" name="pokemon_id" id="renamePokemonId">
 
                     <div class="mb-3">
@@ -133,6 +134,7 @@
 
             <form id="releaseForm" method="POST">
                 <div class="modal-body">
+                    <input type="hidden" name="method_override" value="DELETE">
                     <input type="hidden" name="pokemon_id" id="releasePokemonId">
                     <p>Are you sure you want to release this Pokemon?</p>
                 </div>
